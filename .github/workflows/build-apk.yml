@@ -1,0 +1,86 @@
+name: Build Debug APK
+
+# Trigger on every push/PR to main, and allow manual runs from the Actions tab.
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+  workflow_dispatch: {}
+
+jobs:
+  build-debug-apk:
+    name: Assemble debug APK
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Get the source
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Java 21 (required by compileOptions/kotlinOptions = 17, and by AGP 8.5.2 / Gradle 8.10.2)
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      # 3. Android SDK (cmdline-tools, platform-tools, licenses).
+      #    We do NOT pre-install a specific platform/build-tools version here:
+      #    AGP will auto-download whatever compileSdk/targetSdk needs, as long as
+      #    ANDROID_HOME is set and the SDK licenses are accepted (this step does both).
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Accept all Android SDK licenses (safety net)
+        run: yes | sdkmanager --licenses > /dev/null || true
+
+      # 4. Gradle 8.10.2, installed and run standalone.
+      #    The repo's gradle-wrapper.jar is missing, so we don't rely on ./gradlew at all;
+      #    setup-gradle downloads/caches the exact Gradle version and exposes a `gradle`
+      #    command on PATH, which is the simplest fix that needs no binary committed to git.
+      - name: Set up Gradle 8.10.2
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.10.2"
+
+      # 5. Build the debug APK.
+      - name: Build debug APK
+        run: gradle assembleDebug --stacktrace --no-daemon
+        env:
+          # Belt-and-suspenders: silence AGP's "compileSdk newer than this AGP version
+          # was tested with" warning-as-noise; it does not affect build success.
+          GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+
+      # 6. Verify the APK actually exists and is a real Android package (zip w/ AndroidManifest).
+      - name: Verify APK was generated
+        run: |
+          APK_PATH="app/build/outputs/apk/debug/app-debug.apk"
+          if [ ! -f "$APK_PATH" ]; then
+            echo "::error::Expected APK not found at $APK_PATH"
+            find app/build/outputs -type f 2>/dev/null || true
+            exit 1
+          fi
+          echo "APK found at $APK_PATH"
+          ls -lh "$APK_PATH"
+          file "$APK_PATH"
+          unzip -l "$APK_PATH" | grep -q "AndroidManifest.xml" || { echo "::error::APK does not contain AndroidManifest.xml - not a valid APK"; exit 1; }
+          echo "Valid APK confirmed (contains AndroidManifest.xml)."
+          echo "APK_PATH=$APK_PATH" >> "$GITHUB_ENV"
+
+      # 7. Upload as a downloadable workflow artifact.
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-debug-apk
+          path: app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 14
+
+      # 8. Report the exact path clearly in the run summary.
+      - name: Report APK path
+        run: |
+          echo "### ✅ Debug APK built successfully" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "- In-repo build path: \`app/build/outputs/apk/debug/app-debug.apk\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Download it from this run's **Artifacts** section, name: \`app-debug-apk\`" >> "$GITHUB_STEP_SUMMARY"

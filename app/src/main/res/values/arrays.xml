@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="sort_entries">
+        <item>Name (A–Z)</item>
+        <item>Name (Z–A)</item>
+        <item>Date (Newest first)</item>
+        <item>Date (Oldest first)</item>
+        <item>Size (Largest first)</item>
+        <item>Size (Smallest first)</item>
+        <item>File Type</item>
+    </string-array>
+
+    <string-array name="sort_values">
+        <item>name_asc</item>
+        <item>name_desc</item>
+        <item>date_new</item>
+        <item>date_old</item>
+        <item>size_large</item>
+        <item>size_small</item>
+        <item>type</item>
+    </string-array>
+
+    <string-array name="view_entries">
+        <item>List</item>
+        <item>Grid</item>
+    </string-array>
+
+    <string-array name="view_values">
+        <item>list</item>
+        <item>grid</item>
+    </string-array>
+</resources>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="toolbar_height">56dp</dimen>
+    <dimen name="item_padding">12dp</dimen>
+    <dimen name="item_margin">8dp</dimen>
+    <dimen name="thumbnail_size_list">48dp</dimen>
+    <dimen name="thumbnail_size_grid">120dp</dimen>
+    <dimen name="grid_min_item_width">132dp</dimen>
+    <dimen name="tab_min_item_width">168dp</dimen>
+    <dimen name="page_thumbnail_width">100dp</dimen>
+    <dimen name="page_thumbnail_height">140dp</dimen>
+    <dimen name="corner_radius">8dp</dimen>
+    <dimen name="border_width">2dp</dimen>
+    <dimen name="icon_size">24dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="dialog_padding">24dp</dimen>
+    <dimen name="bottom_nav_height">56dp</dimen>
+    <dimen name="tab_card_width">160dp</dimen>
+    <dimen name="tab_card_height">200dp</dimen>
+    <dimen name="text_size_title">16sp</dimen>
+    <dimen name="text_size_body">14sp</dimen>
+    <dimen name="text_size_caption">12sp</dimen>
+    <dimen name="text_size_small">10sp</dimen>
+</resources>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="100dp"
+    android:layout_height="140dp"
+    android:layout_margin="4dp">
+
+    <ImageView
+        android:id="@+id/pageThumbnail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:background="@color/colorSurface" />
+
+    <TextView
+        android:id="@+id/pageNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:background="#CC000000"
+        android:textColor="@android:color/white"
+        android:textSize="10sp"
+        android:padding="2dp" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        app:buttonTint="@color/colorAccent" />
+
+    <ImageView
+        android:id="@+id/dragHandle"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_gravity="top|start"
+        android:src="@drawable/ic_drag_handle"
+        app:tint="@color/textSecondary"
+        android:padding="2dp" />
+</FrameLayout>

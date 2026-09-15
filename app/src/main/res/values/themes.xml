@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.DarkReader" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorSecondary">@color/colorAccent</item>
+        <item name="colorSurface">@color/colorSurface</item>
+        <item name="colorOnSurface">@color/colorOnSurface</item>
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+        <item name="colorOnSecondary">@color/colorOnSecondary</item>
+        <item name="colorError">@color/colorError</item>
+        <item name="android:textColorPrimary">@color/textPrimary</item>
+        <item name="android:textColorSecondary">@color/textSecondary</item>
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
+        <item name="android:windowBackground">@color/colorBackground</item>
+        <item name="bottomNavigationStyle">@style/Widget.DarkReader.BottomNav</item>
+        <item name="materialAlertDialogTheme">@style/Theme.DarkReader.Dialog</item>
+        <item name="alertDialogTheme">@style/Theme.DarkReader.AlertDialog</item>
+        <item name="popupMenuStyle">@style/Widget.DarkReader.PopupMenu</item>
+        <item name="android:editTextColor">@color/textPrimary</item>
+        <item name="android:textColorHint">@color/textSecondary</item>
+        <item name="editTextColor">@color/textPrimary</item>
+        <item name="colorControlNormal">@color/textSecondary</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
+        <item name="colorControlHighlight">@color/rippleColor</item>
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
+    </style>
+
+    <style name="Widget.DarkReader.BottomNav" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="android:background">@color/colorSurface</item>
+        <item name="itemIconTint">@color/bottom_nav_color</item>
+        <item name="itemTextColor">@color/bottom_nav_color</item>
+    </style>
+
+    <style name="Theme.DarkReader.Dialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="android:background">@color/dialogBackground</item>
+        <item name="colorSurface">@color/dialogBackground</item>
+        <item name="colorOnSurface">@color/textPrimary</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.DarkReader.DialogButton</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Widget.DarkReader.DialogButton</item>
+    </style>
+
+    <style name="Theme.DarkReader.AlertDialog" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
+        <item name="android:background">@color/dialogBackground</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/textPrimary</item>
+    </style>
+
+    <style name="Widget.DarkReader.DialogButton" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <style name="Widget.DarkReader.PopupMenu" parent="Widget.MaterialComponents.PopupMenu">
+        <item name="android:popupBackground">@color/colorSurface</item>
+    </style>
+
+    <style name="Theme.DarkReader.BottomSheet" parent="ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/Widget.DarkReader.BottomSheet</item>
+        <item name="android:colorBackground">@color/colorSurface</item>
+    </style>
+
+    <style name="Widget.DarkReader.BottomSheet" parent="Widget.MaterialComponents.BottomSheet">
+        <item name="android:background">@color/colorSurface</item>
+    </style>
+</resources>

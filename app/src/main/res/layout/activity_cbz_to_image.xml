@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorBackground">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorSurface"
+        app:title="CBZ to Images"
+        app:titleTextColor="@color/textPrimary"
+        app:navigationIcon="@drawable/ic_back" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp">
+        <RadioButton
+            android:id="@+id/allPages"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="All Pages"
+            android:textColor="@color/textPrimary"
+            app:buttonTint="@color/colorAccent"
+            android:checked="true" />
+        <RadioButton
+            android:id="@+id/selectedPages"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Selected Pages"
+            android:textColor="@color/textPrimary"
+            app:buttonTint="@color/colorAccent" />
+    </RadioGroup>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerPages"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center_vertical">
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Format:"
+            android:textColor="@color/textPrimary" />
+            
+        <Spinner
+            android:id="@+id/formatSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:background="@color/colorSurface" />
+            
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+            
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnExport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Export"
+            app:backgroundTint="@color/colorAccent"
+            android:textColor="@android:color/black" />
+    </LinearLayout>
+</LinearLayout>
